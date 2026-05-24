@@ -1,0 +1,30 @@
+# CPU image for Railway / docker compose profile "stack" (no GPU).
+# Frontend + Auth API deploy separately (Vercel / Dockerfile.auth).
+FROM python:3.11-slim
+
+ENV DEBIAN_FRONTEND=noninteractive \
+    PYTHONUNBUFFERED=1 \
+    AUTH_API_URL=http://auth-api:8200 \
+    INTERNAL_API_KEY=dev-internal-key-change-me \
+    NLP_SERVICE_URL=http://nlp:8100 \
+    ENABLE_WEBRTC_INGEST=True \
+    SUMMARY_INTERVAL=5
+
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    ffmpeg \
+    libsndfile1 \
+    && rm -rf /var/lib/apt/lists/*
+
+WORKDIR /app
+
+COPY requirements-railway.txt requirements.txt
+RUN pip install --no-cache-dir -r requirements.txt
+
+COPY . .
+
+RUN chmod +x scripts/start_railway.sh
+
+# Railway injects PORT; transcriber binds to it (see realtime_transcriber.py).
+EXPOSE 8765
+
+CMD ["sh", "scripts/start_railway.sh"]
