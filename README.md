@@ -26,7 +26,7 @@
 - [Deploy online](#deploy-online)
 - [GitHub par push kaise karein](#github-par-push-kaise-karein)
 - [Suggested repository names](#suggested-repository-names)
-- [License & credits](#license--credits)
+
 
 ---
 
