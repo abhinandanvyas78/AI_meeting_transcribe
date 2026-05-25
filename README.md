@@ -369,7 +369,7 @@ git init
 git add .
 git commit -m "Initial commit: MeetScribe AI live meeting transcription"
 git branch -M main
-git remote add origin https://github.com/ashish8513/ai-meeting-live-transcriber.git
+git remote add origin https://github.com/abhinandanvyas78/AI_meeting_transcribe.git
 git push -u origin main
 ```
 
@@ -457,12 +457,4 @@ docker run --gpus all -p 8765:8765 -p 8081:8081 \
 
 ---
 
-## License & credits
 
-- **Whisper** — OpenAI  
-- **Faster-Whisper**, **pyannote**, **Transformers** — open-source community  
-- Built as an **AI + NLP + Full-Stack** learning & demo project  
-
----
-
-**Viva / demo prep:** [Overview](#project-kya-hai-overview) → [Architecture](#system-architecture) → [Project structure](#project-structure) → [CHANGELOG.md](./CHANGELOG.md).
